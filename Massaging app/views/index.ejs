@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>All chats</h3>
+    <hr>
+    <div class="chat">
+        <% for(let i of chats) { %>
+            <p>Massage from :  <b><%= i.from %></b></p>
+            <div class="msg"><p>Massage is  : <%= i.msg %></p></div>
+            <p>Massage to : <i> <%= i.to %></i></p>
+            
+            <!-- Conditionally render delete button -->
+            <% if (username === i.from) { %>
+                <form action="/chat/<%=i._id%>?_method=DELETE" method="post">
+                    <button class="new_button"><b>Delete Chat</b></button>
+                </form>
+            <% } %>
+            <% if (username === i.from) { %>
+            <form action="chat/<%=i._id%>/update" method="get">
+                <button class="new_button"><b>Edit Chat</b></button>
+            </form>
+            <% } %>
+            <p><%= i.created_at.toString().split(" ")[4] %></p>
+            <p><%= i.created_at.toString().split(" ").splice(0,4).join("-") %></p>
+            <hr>
+        <% } %>
+
+    </div>
+
+    <form method="post" action="/chat">
+        <textarea name="msg" cols="30" rows="10" placeholder="Enter your message"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    
+</body>
+</html>

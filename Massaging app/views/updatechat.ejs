@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update your chat</title>
+</head>
+<body>
+    <form action="/chat/<%=paisi._id%>?_method=PUT" method="post">
+        <p>Your id is <%= paisi._id %></p>
+        <p>The chat was from<%= paisi.from %> to <%= paisi.to %></p>
+        <textarea name="newmsg" cols="30" rows="10"><%= paisi.msg %></textarea>
+        <br><br>
+        <button>Edit</button>
+    </form>
+</body>
+</html>
